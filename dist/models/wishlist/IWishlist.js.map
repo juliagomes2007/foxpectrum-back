@@ -1,0 +1,1 @@
+{"version":3,"file":"IWishlist.js","sourceRoot":"","sources":["../../../src/models/wishlist/IWishlist.ts"],"names":[],"mappings":";;;AAAA,uCAAyC;AAQ5B,QAAA,UAAU,GAAG,IAAI,iBAAM,CAAQ;IACxC,IAAI,EAAG,EAAC,IAAI,EAAG,CAAA,KAAa,CAAA,EAAE,QAAQ,EAAG,IAAI,EAAE;IAC/C,IAAI,EAAG,EAAE,IAAI,EAAE,gBAAK,CAAC,QAAQ,EAAE,GAAG,EAAE,MAAM,EAAE,QAAQ,EAAE,KAAK,EAAE;CAChE,CAAC,CAAC"}
