@@ -1,8 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { TodoRepository } from '../repositories/todo-repository';
 import { ITodo } from '../models/todo/ITodo';
-// import CourseRepo from './../repositories/CoursesRepo';
-// import { apiErrorHandler } from './../handlers/errorHandler';
 
 export default class TodoController {
   constructor() { }
@@ -15,7 +13,7 @@ export default class TodoController {
 
         return res.json({success});
       } catch (error) {
-        // apiErrorHandler(error, req, res, 'Fetch All Courses failed.');
+        console.log({error: error});
       }
   }
 
@@ -69,17 +67,4 @@ export default class TodoController {
       return res.json({error: err});
     }
   }
-
-//   async getCourseDetails(req: Request, res: Response, next: NextFunction) {
-//     try {
-//       const courseDetails = await CourseRepo.getById(req.params.id);
-//       if (courseDetails) {
-//         return res.json(courseDetails);
-//       } else {
-//         res.status(404).send(`Lesson ${req.params.id} not found.`);
-//       }
-//     } catch (error) {
-//       apiErrorHandler(error, req, res, `Course ${req.params.id} is failed.`);
-//     }
-//   }
 }

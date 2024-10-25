@@ -1,29 +1,30 @@
-import { connect, disconnect, model, Schema } from "mongoose";
-import { IUser, userSchema } from "../models/user/IUser";
+import { connect, disconnect, model } from "mongoose";
+import { IEvent, eventSchema } from "../models/event/IEvent";
 
-export class UserRepository {
-    
+
+export class EventRepository {
+
     private dbname = process.env.DB_NAME ?? 'foxpectrum';
 
-    public async save(user: IUser): Promise<any> {
-        const User = model<IUser>('User', userSchema);
-        
-        const userData = new User({...user});
-        
+    public async save(event: IEvent): Promise<any> {
+        const Event = model<IEvent>('Event', eventSchema);
+
+        const eventData = new Event({...event,});
+
         try {
             await connect(`mongodb://localhost:27017/${this.dbname}`);
-            return !!(await userData.save()).id;
+            return !!(await eventData.save()).id;
         } catch (error) {
             console.log(error);
         }
     }
 
-    public async getAll(): Promise<IUser[]> {
-        const User = model<IUser>('User', userSchema);
+    public async getByDate(date: string) {
+        const Event = model<IEvent>('Event', eventSchema);
 
         try {
             await connect(`mongodb://localhost:27017/${this.dbname}`);
-            return await User.find({});
+            return await Event.find({ date: date as unknown as string});
         } catch (error) {
             console.log(error);
         } finally {
@@ -33,27 +34,27 @@ export class UserRepository {
         return [];
     }
 
-    public async update(_id: string, todo: IUser) {
-        const User = model<IUser>('User', userSchema);
+    public async update(_id: string, event: IEvent) {
+        const Event = model<IEvent>('Event', eventSchema);
 
         try {
             await connect(`mongodb://localhost:27017/${this.dbname}`);
-            return await User.updateOne({_id}, {...todo}); //== {task: todo.task, check: todo.check}
+            return await Event.updateOne({_id}, {...event}); //== {task: todo.task, check: todo.check}
         } catch (error) {
             console.log(error);
         } finally {
             disconnect();
         }
 
-        return User;
+        return Event;
     }
 
     public async deleteById(_id: string) {
-        const User = model<IUser>('User', userSchema);
+        const Event = model<IEvent>('Event', eventSchema);
 
         try{
             await connect(`mongodb://localhost:27017/${this.dbname}`);
-            return await User.deleteOne({_id});
+            return await Event.deleteOne({_id});
         } catch (error) {
             console.log(error);
         } finally {

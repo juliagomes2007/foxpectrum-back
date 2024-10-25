@@ -1,35 +1,49 @@
 import { Request, Response, NextFunction } from 'express';
-import { UserRepository } from '../repositories/user-repository';
-import { IUser } from '../models/user/IUser';
-// import CourseRepo from './../repositories/CoursesRepo';
-// import { apiErrorHandler } from './../handlers/errorHandler';
+import { RegisterRepository } from '../repositories/register-repository';
+import { IRegister } from '../models/register/IRegister';
 
 export default class AuthController {
   constructor() { }
 
   async save(req: Request, res: Response, next: NextFunction) {
-    const userRepo = new UserRepository();
+    const registerRepo = new RegisterRepository();
 
     try {
-        const id = await userRepo.save(req.body as IUser)
+        const id = await registerRepo.save(req.body as IRegister)
 
         return res.json({id});
       } catch (error) {
-        // apiErrorHandler(error, req, res, 'Fetch All Courses failed.');
       }
-    console.log('teste')
   }
 
-//   async getCourseDetails(req: Request, res: Response, next: NextFunction) {
-//     try {
-//       const courseDetails = await CourseRepo.getById(req.params.id);
-//       if (courseDetails) {
-//         return res.json(courseDetails);
-//       } else {
-//         res.status(404).send(`Lesson ${req.params.id} not found.`);
-//       }
-//     } catch (error) {
-//       apiErrorHandler(error, req, res, `Course ${req.params.id} is failed.`);
-//     }
-//   }
+  async getAll(req: Request, res: Response, next: NextFunction) {
+    try {
+      const registerRepo = new RegisterRepository();
+
+      const registerList =  await registerRepo.getAll();
+      return res.json(registerList);
+    } catch (error) {
+      return res.json({error: error});
+    }
+  }
+
+  async updateRegister(req: Request, res: Response, next: NextFunction) {
+    try {
+      const registerRepo = new RegisterRepository();
+      const register =  await registerRepo.update(req.params.id as string, req.body as IRegister);
+      return res.json(register);
+    } catch (err) { 
+      return res.json({error: err});
+    }
+  }
+
+  async deleteById(req: Request, res: Response, next: NextFunction){
+    try {
+      const registerRepo = new RegisterRepository();
+      const register = await registerRepo.deleteById(req.params.id as string);
+      return res.json(register);
+    } catch (err) {
+      return res.json({error: err});
+    }
+  }
 }

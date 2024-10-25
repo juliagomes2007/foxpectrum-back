@@ -10,6 +10,9 @@ class AuthRoutes {
   }
   intializeRoutes() {
     this.router.route('/save').post(this.authController.save);
+    this.router.route('/').get(this.authController.getAll);
+    this.router.route('/:id').put(this.authController.updateRegister);
+    this.router.route("/:id").delete(this.authController.deleteById);
   }
 }
 export default new AuthRoutes().router;

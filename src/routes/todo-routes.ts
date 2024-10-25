@@ -16,11 +16,6 @@ export class TodoRoutes {
     this.router.route('/:date').get(this.todoController.getByDate);
     this.router.route('/:id').put(this.todoController.updateTodo);
     this.router.route("/:id").delete(this.todoController.deleteById);
-    // this.router.route('/:id').get(this.authController.getCourseDetails);
   }
 }
 export default new TodoRoutes().router;
-
-
-// api/v1/auth/save
-// api/v1/todo/save
