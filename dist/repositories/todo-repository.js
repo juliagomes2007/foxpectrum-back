@@ -83,7 +83,7 @@ class TodoRepository {
             const Todo = (0, mongoose_1.model)('Todo', ITodo_1.todoSchema);
             try {
                 yield (0, mongoose_1.connect)(`mongodb://localhost:27017/${this.dbname}`);
-                return yield Todo.updateOne({ _id }, Object.assign({}, todo)); //== {task: todo.task, check: todo.check}
+                return yield Todo.updateOne({ _id }, Object.assign({}, todo));
             }
             catch (error) {
                 console.log(error);

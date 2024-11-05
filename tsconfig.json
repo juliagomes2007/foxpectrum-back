@@ -1,25 +1,50 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
-    "noImplicitAny": false,
-    "sourceMap": true,
-    "strict": true,
-    "allowJs": false,
-    "outDir": "dist"
-  },
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/.DS_Store": true,
-    "**/node_modules": true,
-    "**/*.js": {
-      "when": "$(basename).ts"
-    },
-    "**/*.js.map": true
+      "target": "es6",
+      "moduleResolution": "node",
+      "module": "commonjs",
+      "lib": [
+          "es6"
+      ],
+      "sourceMap": true,
+      "outDir": "dist",
+      "strict": true,
+      "noImplicitAny": false,
+      "strictNullChecks": true,
+      "strictFunctionTypes": false,
+      "noImplicitThis": true,
+      "resolveJsonModule": true,
+      "alwaysStrict": true,
+      "removeComments": true,
+      "noImplicitReturns": false,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "baseUrl": ".",
+      "paths": {
+          "@src/": [
+              "./src/"
+          ],
+          "@modules/": [
+              "./src/app/modules/"
+          ],
+          "@test/": [
+              "./test/"
+          ]
+      },
+      "rootDirs": [
+          "./src",
+          "./test"
+      ],
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true
   },
   "include": [
-    "src/"
-  ]
+        "./src/**/*.ts",
+        "./test//.ts",
+        "src/app/db/db.js"
+    ],
+    "exclude": [
+        "./node_modules/",
+        "dist"
+    ]
 }

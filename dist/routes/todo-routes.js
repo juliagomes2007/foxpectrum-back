@@ -1,8 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TodoRoutes = void 0;
 const express_1 = require("express");
-const todo_controller_1 = require("../controllers/todo.controller");
+const todo_controller_1 = __importDefault(require("../controllers/todo.controller"));
 class TodoRoutes {
     constructor() {
         this.router = (0, express_1.Router)();
@@ -16,11 +19,8 @@ class TodoRoutes {
         this.router.route('/:date').get(this.todoController.getByDate);
         this.router.route('/:id').put(this.todoController.updateTodo);
         this.router.route("/:id").delete(this.todoController.deleteById);
-        // this.router.route('/:id').get(this.authController.getCourseDetails);
     }
 }
 exports.TodoRoutes = TodoRoutes;
 exports.default = new TodoRoutes().router;
-// api/v1/auth/save
-// api/v1/todo/save
 //# sourceMappingURL=todo-routes.js.map

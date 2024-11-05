@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.todoSchema = void 0;
 const mongoose_1 = require("mongoose");
 exports.todoSchema = new mongoose_1.Schema({
+    id: mongoose_1.Types.ObjectId,
     task: { type: String, required: true },
     date: { type: Date, required: false },
     everyDay: { type: Boolean, default: false, required: true },

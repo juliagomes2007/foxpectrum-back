@@ -10,8 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const todo_repository_1 = require("../repositories/todo-repository");
-// import CourseRepo from './../repositories/CoursesRepo';
-// import { apiErrorHandler } from './../handlers/errorHandler';
 class TodoController {
     constructor() { }
     save(req, res, next) {
@@ -22,7 +20,7 @@ class TodoController {
                 return res.json({ success });
             }
             catch (error) {
-                // apiErrorHandler(error, req, res, 'Fetch All Courses failed.');
+                console.log({ error: error });
             }
         });
     }
@@ -42,7 +40,7 @@ class TodoController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const todoRepo = new todo_repository_1.TodoRepository();
-                const todoList = yield todoRepo.getByStatus(req.params.status); // pega status da url
+                const todoList = yield todoRepo.getByStatus(req.params.status);
                 return res.json(todoList);
             }
             catch (err) {
@@ -54,7 +52,7 @@ class TodoController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const todoRepo = new todo_repository_1.TodoRepository();
-                const todoList = yield todoRepo.getByDate(req.params.date); // pega status da url
+                const todoList = yield todoRepo.getByDate(req.params.date);
                 return res.json(todoList);
             }
             catch (err) {

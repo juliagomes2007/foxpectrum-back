@@ -41,7 +41,7 @@ class MoodTrackerController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const moodTrackerRepo = new moodTracker_repository_1.MoodTrackerRepository();
-                const moodTrackerList = yield moodTrackerRepo.getById(req.params.status); // pega status da url
+                const moodTrackerList = yield moodTrackerRepo.getById(req.params.status);
                 return res.json(moodTrackerList);
             }
             catch (err) {

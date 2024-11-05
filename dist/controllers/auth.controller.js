@@ -9,22 +9,54 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const user_repository_1 = require("../repositories/user-repository");
-// import CourseRepo from './../repositories/CoursesRepo';
-// import { apiErrorHandler } from './../handlers/errorHandler';
+const register_repository_1 = require("../repositories/register-repository");
 class AuthController {
     constructor() { }
     save(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userRepo = new user_repository_1.UserRepository();
+            const registerRepo = new register_repository_1.RegisterRepository();
             try {
-                const id = yield userRepo.save(req.body);
+                const id = yield registerRepo.save(req.body);
                 return res.json({ id });
             }
             catch (error) {
-                // apiErrorHandler(error, req, res, 'Fetch All Courses failed.');
             }
-            console.log('teste');
+        });
+    }
+    getAll(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const registerRepo = new register_repository_1.RegisterRepository();
+                const registerList = yield registerRepo.getAll();
+                return res.json(registerList);
+            }
+            catch (error) {
+                return res.json({ error: error });
+            }
+        });
+    }
+    updateRegister(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const registerRepo = new register_repository_1.RegisterRepository();
+                const register = yield registerRepo.update(req.params.id, req.body);
+                return res.json(register);
+            }
+            catch (err) {
+                return res.json({ error: err });
+            }
+        });
+    }
+    deleteById(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const registerRepo = new register_repository_1.RegisterRepository();
+                const register = yield registerRepo.deleteById(req.params.id);
+                return res.json(register);
+            }
+            catch (err) {
+                return res.json({ error: err });
+            }
         });
     }
 }

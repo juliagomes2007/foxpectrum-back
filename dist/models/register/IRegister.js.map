@@ -1,0 +1,1 @@
+{"version":3,"file":"IRegister.js","sourceRoot":"","sources":["../../../src/models/register/IRegister.ts"],"names":[],"mappings":";;;AAAA,uCAAyC;AAO5B,QAAA,cAAc,GAAG,IAAI,iBAAM,CAAY;IAChD,KAAK,EAAE,EAAE,IAAI,EAAE,MAAM,EAAE,QAAQ,EAAE,IAAI,EAAE;IACvC,QAAQ,EAAE,EAAE,IAAI,EAAE,MAAM,EAAE,QAAQ,EAAE,IAAI,EAAE;CAC7C,CAAC,CAAC"}

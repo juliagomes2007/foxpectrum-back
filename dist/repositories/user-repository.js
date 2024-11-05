@@ -30,6 +30,53 @@ class UserRepository {
             }
         });
     }
+    getAll() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const User = (0, mongoose_1.model)('User', IUser_1.userSchema);
+            try {
+                yield (0, mongoose_1.connect)(`mongodb://localhost:27017/${this.dbname}`);
+                return yield User.find({});
+            }
+            catch (error) {
+                console.log(error);
+            }
+            finally {
+                (0, mongoose_1.disconnect)();
+            }
+            return [];
+        });
+    }
+    update(_id, todo) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const User = (0, mongoose_1.model)('User', IUser_1.userSchema);
+            try {
+                yield (0, mongoose_1.connect)(`mongodb://localhost:27017/${this.dbname}`);
+                return yield User.updateOne({ _id }, Object.assign({}, todo));
+            }
+            catch (error) {
+                console.log(error);
+            }
+            finally {
+                (0, mongoose_1.disconnect)();
+            }
+            return User;
+        });
+    }
+    deleteById(_id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const User = (0, mongoose_1.model)('User', IUser_1.userSchema);
+            try {
+                yield (0, mongoose_1.connect)(`mongodb://localhost:27017/${this.dbname}`);
+                return yield User.deleteOne({ _id });
+            }
+            catch (error) {
+                console.log(error);
+            }
+            finally {
+                (0, mongoose_1.disconnect)();
+            }
+        });
+    }
 }
 exports.UserRepository = UserRepository;
 //# sourceMappingURL=user-repository.js.map

@@ -1,20 +1,11 @@
-import * as dotenv from 'dotenv';
-dotenv.config();
-import * as express from 'express';
-import { Application } from 'express';
+import { SetupApplication } from './app';
 
-import Server from './src/server';
+class Server {
+    static start(): void {
+        const application = new SetupApplication(3333);
+        application.init();
+        application.start();
+    }
+}
 
-const app: Application = express();
-const server: Server = new Server(app);
-const port: number = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
-
-app.listen(port, 'localhost', function () {
-  console.info(`Server running on : http://localhost:${port}`);
-}).on('error', (err: any) => {
-  if (err.code === 'EADDRINUSE') {
-    console.log('server startup error: address already in use');
-  } else {
-    console.log(err);
-  }
-});
+Server.start();

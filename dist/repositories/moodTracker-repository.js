@@ -68,7 +68,7 @@ class MoodTrackerRepository {
             const MoodTracker = (0, mongoose_1.model)('MoodTracker', IMoodTracker_1.moodTrackerSchema);
             try {
                 yield (0, mongoose_1.connect)(`mongodb://localhost:27017/${this.dbname}`);
-                return yield MoodTracker.updateOne({ _id }, Object.assign({}, moodTracker)); //== {task: todo.task, check: todo.check}
+                return yield MoodTracker.updateOne({ _id }, Object.assign({}, moodTracker));
             }
             catch (error) {
                 console.log(error);
